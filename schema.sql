@@ -10,7 +10,7 @@ CREATE TABLE events (
   rating varchar (50) NOT NULL,
   PRIMARY KEY (ID)
 
-);
+);  
 
 
 INSERT INTO events (event, rating) VALUES ("concert", "1");
