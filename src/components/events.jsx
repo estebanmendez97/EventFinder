@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 
 class Events extends Component {
   render() {
-    return ();
+    return (
+      <div></div>
+    );
   }
 }
 
-export default Event;
+export default Events;

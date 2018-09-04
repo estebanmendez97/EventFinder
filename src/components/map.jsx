@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 
 class Map extends Component {
   render () {
-    return();
+    return(
+      <div></div>
+    );
   }
 }
 
