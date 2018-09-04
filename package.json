@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "mysql": "^2.16.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-axios": "^2.0.1",
@@ -15,8 +16,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "dependencies": {
-    "mysql": "^2.15.0"
   }
 }
