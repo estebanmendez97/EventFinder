@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getEvent;
   }
 
@@ -25,6 +25,11 @@ class App extends Component {
     console.log(data);
   }
 
+  componentDidMount(){
+  this.setState({
+    list: data
+  })
+}
 
 
   render() {
