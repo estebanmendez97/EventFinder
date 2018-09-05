@@ -32,6 +32,7 @@ class App extends Component {
  }
 
  componentDidMount() {
+   console.log("Nick was here")
     navigator.geolocation.getCurrentPosition(location => {
       this.setState({
         lat: location.coords.latitude,
