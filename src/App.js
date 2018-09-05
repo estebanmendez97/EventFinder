@@ -17,9 +17,7 @@ class App extends Component {
 
 
  getEvent = async () => {
-   await fetch (`http://eventful.com/json/events/search?app_key=${API_KEY}&where=${this.state.lat},${this.state.lon}&within=14&q=music`, {
-      method: 'GET'
-    })
+   await fetch (`http://eventful.com/json/events/search?app_key=${API_KEY}&where=${this.state.lat},${this.state.lon}&within=14z&q=music`)
     .then(res => res.json())
     .then(data => {
       console.log(data, data.events.tabular.events, this.state.lat, this.state.lon)
@@ -32,7 +30,6 @@ class App extends Component {
  }
 
  componentDidMount() {
-   console.log("Nick was here")
     navigator.geolocation.getCurrentPosition(location => {
       this.setState({
         lat: location.coords.latitude,
