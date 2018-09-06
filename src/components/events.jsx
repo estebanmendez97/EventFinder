@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Events = props => (
-
-      <div>{props.eventList}</div>
+    <ul>
+      <li>{props.eventList}</li>
+    </ul>
 
 )
 
