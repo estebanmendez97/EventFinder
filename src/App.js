@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home';
 import API_KEY from './Api.js';
 import Form from './components/form.jsx';
 import Events from './components/events.jsx';
 import Map from './components/map.jsx';
+
 
 class App extends Component {
  constructor (props){
@@ -17,16 +20,14 @@ class App extends Component {
 
 
  getEvent = async () => {
-   await fetch (`http://eventful.com/json/events/search?app_key=${API_KEY}&where=${this.state.lat},${this.state.lon}&within=14z&q=music`)
+   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=music`)
     .then(res => res.json())
     .then(data => {
-      console.log(data, data.events.tabular.events, this.state.lat, this.state.lon)
     this.setState({
-        eventList: data.events.tabular.events[0].title
-
+        eventList: data.events.event
       })
     })
-    console.log(this.state.eventList)
+
  }
 
  componentDidMount() {
@@ -40,13 +41,12 @@ class App extends Component {
  }
 
 
-
-
  render() {
    return (
+
      <div>
        <Form getEvent={this.getEvent}/>
-       <Events eventList={this.state.eventList}/>
+       <Events eventList={this.state.eventList.map((item,i) => <li key={i}>{item.title}</li>)}/>
        <Map />
      </div>
    );
