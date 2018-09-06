@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home';
 import API_KEY from './Api.js';
 import Form from './components/form.jsx';
 import Events from './components/events.jsx';
@@ -44,6 +46,7 @@ class App extends Component {
 
  render() {
    return (
+
      <div>
        <Form getEvent={this.getEvent}/>
        <Events eventList={this.state.eventList}/>
