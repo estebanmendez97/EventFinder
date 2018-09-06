@@ -25,6 +25,7 @@ class App extends Component {
         eventList: data.events.event
       })
     })
+
  }
 
  componentDidMount() {
