@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './components/Home';
+//import { BrowserRouter, Route } from 'react-router-dom';
+//import Home from './components/Home';
 import API_KEY from './Api.js';
 import Form from './components/form.jsx';
 import Events from './components/events.jsx';
 import Map from './components/map.jsx';
+import $ from 'jquery';
+import Comments from './components/feedback.jsx';
 
 
 class App extends Component {
@@ -14,10 +16,30 @@ class App extends Component {
      eventList: [],
      lat: null,
      lon: null,
+     comments:'',
      category: ''
    }
+
    this.getEvent = this.getEvent.bind(this);
    this.getCategory= this.getCategory.bind(this);
+   this.addComment= this.addComment.bind(this);
+
+ }
+
+ addComment(comments) {
+
+   $.ajax({
+     url:'/',
+     type: "POST",
+     contentType: 'application/json',
+     data: JSON.stringify({
+       comments: comments
+     }),
+     success: (data)=> {
+     },
+     error: (xhr,status,error) => {
+     }
+   });
  }
 
 
