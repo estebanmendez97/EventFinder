@@ -5,7 +5,7 @@ const About = () => {
 
     <div>
 
-      <p>About</p>
+      <p>Ajkfeekfkjef</p>
 
     </div>
 

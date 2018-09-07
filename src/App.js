@@ -84,36 +84,36 @@ class App extends Component {
 
  render() {
 
-   var eventInfo = this.state.eventList.map((item) => [item.title, item.venue_name, item.longitude, item.latitude, item.start_time]);
+  var eventInfo = this.state.eventList.map((item) => [item.title, item.venue_name, item.longitude, item.latitude, item.start_time]);
 
    return (
 
+     <BrowserRouter>
      <div>
 
-       <Form getCategory={this.getCategory} getEvent={this.getEvent}/>
+        <Form getCategory={this.getCategory} getEvent={this.getEvent}/>
 
-       <Form getEvent={this.getEvent}/>
+           <Form getEvent={this.getEvent}/>
+             <Events eventInfo ={eventInfo}/>
+             <Map eventInfo ={eventInfo}/>
 
-       <Events eventInfo ={eventInfo}/>
-       <Map eventInfo ={eventInfo}/>
 
-
-      <BrowserRouter>
-      <div>
       <Navigation />
+
   <Switch>
 
-<Route path='/' component={Home} />
+<Route exact path='/' component={Home} />
 <Route path='/about' component={About} />
 <Route path='/contact' component={Contact} />
-<Route component={Error} />
 
 </Switch>
+
+
   </div>
 </BrowserRouter>
 
 
-</div>
+
 
 
    );
