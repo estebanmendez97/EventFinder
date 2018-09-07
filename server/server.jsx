@@ -5,6 +5,8 @@ var database = require('../database/index.js')
 var app = express();
  app.use(bodyParser.json());
  app.use(express.static(__dirname + '../public'));
+
+
  app.post('/', function (req, res) {
  let comments = req.body.comments;
   if(!comments) {
@@ -19,6 +21,8 @@ var app = express();
    });
   }
 })
+
+
  app.get('/', function (req, res) {
   database.selectEvent(function(err, results) {
     if(err) {
@@ -28,6 +32,8 @@ var app = express();
     }
   });
 });
+
+
  app.listen(3000, function() {
  console.log('listening on port 3000!');
 });
