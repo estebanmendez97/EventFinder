@@ -58,18 +58,6 @@ class App extends Component {
       })
       this.getEvent();
     });
-
-    $.ajax({
-     url: '/',
-     success: (data) => {
-       this.setState({
-         comments: ''
-       })
-     },
-     error: (err) => {
-       console.log('err', err);
-     }
-   });
  }
 
 
