@@ -32,8 +32,10 @@ class App extends Component {
         eventList: data.events.event
       })
     })
-
+    console.log(this.state.eventList)
  }
+
+
 
  componentDidMount() {
     navigator.geolocation.getCurrentPosition(location => {
@@ -47,6 +49,7 @@ class App extends Component {
 
 
  render() {
+<<<<<<< HEAD
    return (
      <div>
        <Form getEvent={this.getEvent}/>
@@ -63,6 +66,16 @@ class App extends Component {
         </BrowserRouter>
 
 
+=======
+
+   var eventInfo = this.state.eventList.map((item) => [item.title, item.venue_name, item.longitude, item.latitude, item.start_time]);
+
+   return (
+     <div>
+       <Form getEvent={this.getEvent}/>
+       <Events eventInfo ={eventInfo}/>
+       <Map eventInfo ={eventInfo}/>
+>>>>>>> master
      </div>
    );
  }
