@@ -1,3 +1,25 @@
-#main{
-  margin-left: 500px
+
+
+h1 {
+  font-family: 'Londrina Sketch', cursive;
 }
+
+.radius {
+  border-radius: 2.3rem;
+  font-family: 'Amatic SC', cursive;
+}
+
+button {
+  font-family: 'Amatic SC', cursive;
+  border-color: transparent;
+  border-radius: 2.3rem;
+}
+/*
+font-family: 'Cabin Sketch', cursive;
+font-family: 'Comfortaa', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Covered By Your Grace', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Abril Fatface', cursive;
+*/

@@ -22,7 +22,7 @@ class App extends Component {
 
 
  getEvent = async () => {
-   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=music`)
+   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&t=today`)
     .then(res => res.json())
     .then(data => {
     this.setState({
@@ -32,9 +32,12 @@ class App extends Component {
  }
 
  getCategory(categorySelected) {
-    fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=${categorySelected}`)
+    fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&t=today&c=${categorySelected}`)
     .then(res => res.json())
     .then(data => {
+      if (data.events === null) {
+        return alert('Sorry!!..there are no '+ categorySelected +' events scheduled today');
+      }
     this.setState({
         eventList: data.events.event
       })
