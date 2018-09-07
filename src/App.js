@@ -16,10 +16,14 @@ class App extends Component {
      eventList: [],
      lat: null,
      lon: null,
-     comments:''
+     comments:'',
+     category: ''
    }
+
    this.getEvent = this.getEvent.bind(this);
+   this.getCategory= this.getCategory.bind(this);
    this.addComment= this.addComment.bind(this);
+
  }
 
  addComment(comments) {
@@ -40,17 +44,27 @@ class App extends Component {
 
 
  getEvent = async () => {
-   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=music`)
+   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&t=today`)
     .then(res => res.json())
     .then(data => {
     this.setState({
         eventList: data.events.event
       })
     })
-    console.log(this.state.eventList)
  }
 
-
+ getCategory(categorySelected) {
+    fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&t=today&c=${categorySelected}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.events === null) {
+        return alert('Sorry!!..there are no '+ categorySelected +' events scheduled today');
+      }
+    this.setState({
+        eventList: data.events.event
+      })
+    })
+ }
 
  componentDidMount() {
     navigator.geolocation.getCurrentPosition(location => {
@@ -69,7 +83,7 @@ class App extends Component {
 
    return (
      <div>
-       <Form getEvent={this.getEvent}/>
+       <Form getCategory={this.getCategory} getEvent={this.getEvent}/>
        <Events eventInfo ={eventInfo}/>
        <Map eventInfo ={eventInfo}/>
      </div>
