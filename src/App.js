@@ -14,7 +14,7 @@ class App extends Component {
      eventList: [],
      lat: null,
      lon: null,
-     category: 'sports'
+     category: ''
    }
    this.getEvent = this.getEvent.bind(this);
    this.getCategory= this.getCategory.bind(this);
@@ -22,7 +22,7 @@ class App extends Component {
 
 
  getEvent = async () => {
-   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=${this.state.category}`)
+   await fetch (`http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&c=music`)
     .then(res => res.json())
     .then(data => {
     this.setState({
