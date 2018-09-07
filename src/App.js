@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-//import { BrowserRouter, Route } from 'react-router-dom';
-//import Home from './components/Home';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Error from './components/Error';
+import Navigation from './components/Navigation';
+
 import API_KEY from './Api.js';
 import Form from './components/form.jsx';
 import Events from './components/events.jsx';
@@ -79,16 +84,41 @@ class App extends Component {
 
  render() {
 
-   var eventInfo = this.state.eventList.map((item) => [item.title, item.venue_name, item.longitude, item.latitude, item.start_time]);
+  var eventInfo = this.state.eventList.map((item) => [item.title, item.venue_name, item.longitude, item.latitude, item.start_time]);
 
    return (
+
+     <BrowserRouter>
      <div>
-       <Form getCategory={this.getCategory} getEvent={this.getEvent}/>
-       <Events eventInfo ={eventInfo}/>
-       <Map eventInfo ={eventInfo}/>
-     </div>
+
+        <Form getCategory={this.getCategory} getEvent={this.getEvent}/>
+
+           <Form getEvent={this.getEvent}/>
+             <Events eventInfo ={eventInfo}/>
+             <Map eventInfo ={eventInfo}/>
+
+
+      <Navigation />
+
+  <Switch>
+
+<Route exact path='/' component={Home} />
+<Route path='/about' component={About} />
+<Route path='/contact' component={Contact} />
+
+</Switch>
+
+
+  </div>
+</BrowserRouter>
+
+
+
+
+
    );
  }
+
 }
 
 export default App;
